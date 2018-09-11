@@ -21,6 +21,14 @@
       width: 100px;
       text-align: right;
     }
+    #itemList,
+    #resultList {
+      font-size: 1.5rem;
+    }
+    #itemList li,
+    #resultList li {
+      margin-bottom: 1.5rem;
+    }
   </style>
 
   <title>LE Roulette</title>
@@ -40,7 +48,7 @@
     </div>
 
     <!-- 候補のリスト -->
-    <ul id="itemlist" class="grd">
+    <ul id="itemList" class="grd">
       <li v-for="(item, index) in itemList" class="grd-row">
         <div class="grd-row-col-4-6" :style="itemStyle(index)">{{ item.text }}</div>
         <div class="grd-row-col-1-6">
@@ -68,7 +76,7 @@
     </template>
 
     <!-- 選択結果のリスト -->
-    <ol id="result">
+    <ol id="resultList">
       <li v-for="(result, index) in resultList">
         {{ result }}
       </li>
