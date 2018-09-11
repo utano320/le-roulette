@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <style>
+    #choice-count {
+      width: 100px;
+    }
+  </style>
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div id="input-area">
+      新しい候補を追加<input id="new-item" type="text" v-model="newItem">
+      <button @click="addItem">追加</button>
+    </div>
+
+    <!-- 候補のリスト -->
+    <ul id="itemlist">
+      <li v-for="(item, index) in itemList">
+        <span :style="itemStyle(index)">{{ item.text }}</span> <a href="" @click.prevent="toggleItem(index)">[-]</a> <a
+          href="" @click.prevent="deleteItem(index)">[x]</a>
+      </li>
+    </ul>
+
+    <template v-if="itemList.length >= 2">
+      いくつ選びますか？<input id="choice-count" type="number" min="1" :max="itemList.length" v-model="n">
+      <button id="choiceButton" @click="choiceItem">実行</button>
+    </template>
+
+    <!-- 選択結果のリスト -->
+    <ul id="result">
+      <li v-for="(result, index) in resultList">
+        {{ result }}
+      </li>
+    </ul>
+
+  </div>
+
+  <script src="./node_modules/vue/dist/vue.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
