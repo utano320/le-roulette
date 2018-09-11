@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel="stylesheet" href="./node_modules/milligram/dist/milligram.min.css">
+  <link rel="stylesheet" href="./node_modules/furtive/css/furtive.min.css">
   <style>
-
+    #app {
+      margin: 1.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
     #choice-count {
       width: 100px;
     }
@@ -19,16 +25,18 @@
 
 <body>
   <div id="app">
+    <h1>LE Roulette</h1>
     <div id="input-area">
-      新しい候補を追加<input id="new-item" type="text" v-model="newItem">
-      <button @click="addItem">追加</button>
+      <label for="new-item">新しい候補を追加</label><input id="new-item" type="text" v-model="newItem">
+      <button class="btn--blue" @click="addItem">追加</button>
     </div>
 
     <!-- 候補のリスト -->
-    <ul id="itemlist">
-      <li v-for="(item, index) in itemList">
-        <span :style="itemStyle(index)">{{ item.text }}</span> <a href="" @click.prevent="toggleItem(index)">[-]</a> <a
-          href="" @click.prevent="deleteItem(index)">[x]</a>
+    <ul id="itemlist" class="grd">
+      <li v-for="(item, index) in itemList" class="grd-row">
+        <div class="grd-row-col-4-6" :style="itemStyle(index)">{{ item.text }}</div>
+        <div class="grd-row-col-1-6"><a href="" @click.prevent="toggleItem(index)">[-]</a></div>
+        <div class="grd-row-col-1-6"><a href="" @click.prevent="deleteItem(index)">[x]</a></div>
       </li>
     </ul>
 

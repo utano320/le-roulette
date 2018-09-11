@@ -1,7 +1,11 @@
 const app = new Vue({
   el: "#app",
   data: {
-    itemList: [],
+    itemList: [
+      { text: "あいうえお", rest: false },
+      { text: "abcedfghi", rest: false },
+      { text: "かきくけこ", rest: false }
+    ],
     newItem: "",
     resultList: [],
     n: 1
