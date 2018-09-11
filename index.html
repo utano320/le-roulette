@@ -19,6 +19,7 @@
     }
     #choice-count {
       width: 100px;
+      text-align: right;
     }
   </style>
 
@@ -29,8 +30,13 @@
   <div id="app">
     <h1>LE Roulette</h1>
     <div id="input-area">
-      <label for="new-item">新しい候補を追加</label><input id="new-item" type="text" v-model="newItem">
-      <button class="btn--blue" @click="addItem">追加</button>
+      <div>
+        <label for="new-item">新しい候補を追加</label>
+        <input id="new-item" type="text" v-model="newItem">
+      </div>
+      <div>
+        <button class="btn--blue" @click="addItem">　　追加　　</button>
+      </div>
     </div>
 
     <!-- 候補のリスト -->
@@ -52,16 +58,21 @@
     </ul>
 
     <template v-if="itemList.length >= 2">
-      いくつ選びますか？<input id="choice-count" type="number" min="1" :max="itemList.length" v-model="n">
-      <button id="choiceButton" @click="choiceItem">実行</button>
+      <div>
+        <label for="choice-count">いくつ選びますか？</label>
+        <input id="choice-count" type="number" min="1" :max="itemList.length" v-model="n">
+      </div>
+      <div>
+        <button class="btn--blue" id="choice-button" @click="choiceItem">　　実行　　</button>
+      </div>
     </template>
 
     <!-- 選択結果のリスト -->
-    <ul id="result">
+    <ol id="result">
       <li v-for="(result, index) in resultList">
         {{ result }}
       </li>
-    </ul>
+    </ol>
 
   </div>
 
