@@ -57,9 +57,6 @@ const app = new Vue({
         return;
       }
 
-      console.log("validate: true");
-      return;
-
       let results = [];
       let count = 0;
       for (let i = 0; i < this.n; i++) {
