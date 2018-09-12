@@ -37,8 +37,29 @@ const app = new Vue({
     toggleItem(index) {
       this.itemList[index].rest = !this.itemList[index].rest;
     },
+    validate() {
+      // 自然数以外の入力を除外
+      let reg = /^[0-9]+$/;
+      if (this.n.toString().match(reg) === null) return false;
+      // 0を除外
+      if (this.n == 0) return false;
+      // 候補数を超える自然数を除外
+      if (this.n > this.itemList.length) return false;
+
+      // 入力値の検証OK
+      return true;
+    },
     // n個のitemをランダムに選択する
     choiceItem() {
+      // nの値が「有効な（お休みでない）候補の数」以下の整数だけ許す
+      if (!this.validate()) {
+        alert("ルーレットで選ぶ数が不正です");
+        return;
+      }
+
+      console.log("validate: true");
+      return;
+
       let results = [];
       let count = 0;
       for (let i = 0; i < this.n; i++) {
